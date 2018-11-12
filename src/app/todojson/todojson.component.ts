@@ -1,0 +1,69 @@
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Observable } from 'rxjs';
+
+@Component({
+  selector: 'app-todojson',
+  templateUrl: './todojson.component.html',
+  styleUrls: ['./todojson.component.scss']
+})
+export class TodojsonComponent implements OnInit {
+
+  jsondata$: Object;
+  todocards$: Array<any>=[];
+
+  constructor(private data: DataService) { }
+  ngOnInit() {
+    this.data.getData().subscribe(
+      data => this.jsondata$ = data 
+    );
+
+    this.data.newtodo.subscribe(
+      data => this.todocards$.push(data)
+    )
+  }
+
+  addTask(event){
+    
+    let task = {
+      id:0,
+      title:""
+    }
+
+    for (let todo of this.todocards$){
+      
+      if(todo.id == event.target.parentElement.id){
+        //  alert(event.target.parentElement);
+        let todotask = event.target.parentElement.getElementsByClassName("taskin");
+        let taskvalue=todotask[0].value;
+        // alert(todotask);
+        task.title = taskvalue;
+        task.id = ++todo.todoid;
+        todo.list.push(task);
+      }
+    }
+  }
+
+  removeTitle(){
+    for( let card of this.todocards$){
+      if(card.id == event.target.parentElement.id){
+        event.target.parentElement.style.display = "none";
+      }
+    }
+  }
+
+  removeTask(event){
+    for(let card of this.todocards$){
+      if(card.id == event.target.parentElement.parentElement.parentElement.id){
+        for( let each of card.list){
+          if(each.id == event.target.parentElement.id){
+            event.target.parentElement.style.display = "none";
+          }
+        }
+      }
+    }
+  }
+
+  
+  
+}
