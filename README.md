@@ -1,11 +1,19 @@
+<html>
+<head>
 
+<h1> To-do List Web Application </h1>
 
+<h2>Objectives </h2>
 
+A simple To Do list Web Application built in HTML, CSS and JavaScript using Angular 6.
 
+1) A user can add a new todo item list with a new title.
+2) A user can click on the '+' button to add a new todo item to that particular list.
+3) A user can click on the 'x' button to remove the todo item.
+4) A user can click on the 'x' button to remove the complete to do list.
 
-
-
-
+<h3>Installation</h3>
+  
 # Todoand
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
