@@ -69,6 +69,21 @@ export class TodojsonComponent implements OnInit {
     }
   }
 
+  strike(event){
+    for(let card of this.todocards$){
+      if(card.id == event.target.parentElement.parentElement.id){
+        for( let each of card.list){
+          if(each.id == event.target.id){
+            
+            // event.target.style.textDecoration = "line-through";
+            event.target.classList.toggle("checked");
+          }
+        }
+      }
+    }
+
+  }
+
   
 
 }
