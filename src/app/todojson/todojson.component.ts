@@ -39,9 +39,14 @@ export class TodojsonComponent implements OnInit {
         let todotask = event.target.parentElement.getElementsByClassName("taskin");
         let taskvalue=todotask[0].value;
         // alert(todotask);
+        if(taskvalue==""){
+          alert("Please add a task");
+        }
+        else{
         task.title = taskvalue;
         task.id = ++todo.todoid;
         todo.list.push(task);
+      }
       }
     }
 
