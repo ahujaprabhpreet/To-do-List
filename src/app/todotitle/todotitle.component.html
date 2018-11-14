@@ -1,5 +1,8 @@
 
 <h2>To Do Lists</h2>   
-<input [(ngModel)]="todotitle" id="inputTitleText" type="text" placeholder="Title">
+<span>
+        <input [(ngModel)]="todotitle" id="inputTitleText" type="text" placeholder="Title">
 
-<button id="addListBtn" (click)="newtodocreate()">+</button>
+        <button id="addListBtn" (click)="newtodocreate($event)">+</button>
+
+</span>
