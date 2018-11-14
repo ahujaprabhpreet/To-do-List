@@ -12,6 +12,7 @@ export class TodojsonComponent implements OnInit {
   jsondata$: Object;
   todocards$: Array<any>=[];
 
+
   constructor(private data: DataService) { }
   ngOnInit() {
     this.data.getData().subscribe(
@@ -21,6 +22,7 @@ export class TodojsonComponent implements OnInit {
     this.data.newtodo.subscribe(
       data => this.todocards$.push(data)
     )
+
   }
 
   addTask(event){
@@ -42,9 +44,12 @@ export class TodojsonComponent implements OnInit {
         todo.list.push(task);
       }
     }
+
+    //resetting text inputs
+    event.target.parentElement.children[1].value = "";
   }
 
-  removeTitle(){
+  removeTitle(event){
     for( let card of this.todocards$){
       if(card.id == event.target.parentElement.id){
         event.target.parentElement.style.display = "none";
@@ -64,6 +69,21 @@ export class TodojsonComponent implements OnInit {
     }
   }
 
+  strike(event){
+    for(let card of this.todocards$){
+      if(card.id == event.target.parentElement.parentElement.id){
+        for( let each of card.list){
+          if(each.id == event.target.id){
+            
+            // event.target.style.textDecoration = "line-through";
+            event.target.classList.toggle("checked");
+          }
+        }
+      }
+    }
+
+  }
+
   
-  
+
 }

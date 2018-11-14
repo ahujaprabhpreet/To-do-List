@@ -8,7 +8,8 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./todotitle.component.scss']
 })
 export class TodotitleComponent implements OnInit, AfterViewChecked {
-  todo$: Object=null;
+  // todo$: Object=null;
+  todo$: any = null;
   public id=0;
   public todotitle = "";
   
@@ -30,7 +31,7 @@ export class TodotitleComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  newtodocreate(){
+  newtodocreate(event){
     this.id++;
     let todocard = {
       id:0,
@@ -54,6 +55,9 @@ export class TodotitleComponent implements OnInit, AfterViewChecked {
     todocard.date = day+"/"+month+"/"+year;
     
     this.data.addtodo(todocard);
+    event.target.parentElement.firstChild.value="";
+
+
 
   }
 
