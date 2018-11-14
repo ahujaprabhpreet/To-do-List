@@ -32,6 +32,10 @@ export class TodotitleComponent implements OnInit, AfterViewChecked {
   }
 
   newtodocreate(event){
+    if (this.todotitle==""){
+      alert("Please add a title.")
+      return;
+    }
     this.id++;
     let todocard = {
       id:0,
@@ -56,8 +60,7 @@ export class TodotitleComponent implements OnInit, AfterViewChecked {
     
     this.data.addtodo(todocard);
     event.target.parentElement.firstChild.value="";
-
-
+    this.todotitle="";
 
   }
 
@@ -71,7 +74,6 @@ export class TodotitleComponent implements OnInit, AfterViewChecked {
         author:"",
         date:"",
         list:[]
-  
       }
 
       todocard.id = this.id;
